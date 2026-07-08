@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{getMessage2()}}</h1>
+        <p>Lucky Number: {{luckyNumber}}</p>
+        <p v-once>Render Once Lucky Number: {{luckyNumber}}</p>
+        <p>Lucky Number list: {{luckyNumbers[0]}}</p>
+        <a v-bind:href="blogUrl">Visit Google</a>
+        <p>{{employee.name}} is {{employee.age}} years old.</p>
+        <p>Lucky number is an {{luckyNumber%2===0?"even number": "odd number"}}</p>
+        <p>Random Number from 1-10: {{updateRandomLuckyNumber()}}</p>
+        <p>His Salary is {{employee.salary}}</p>
+        <p>His salary is {{employee2.salary}}</p>
+        <span v-html="getMessage()"></span>
+
+        <p v-show="employee.hasCorporatedCard">
+            Spending Limit for card: {{employee.spendingLimit}}
+        </p>
+        <p v-if="employee.hasCorporatedCard">
+            Spending Limit for card: {{employee.spendingLimit}}
+        </p>
+        <p v-else-if="employee.salary>25000 && employee.yearsWithCompany>1">
+            Employee is elegible for a Corporate Card
+        </p>
+        <p v-else>
+            Employee is not elegible for a Corporate Card
+        </p>
+
+        <p>Lucky Numbers</p>
+        <span v-for="(luckyNumber,index) in luckyNumbers">
+            </br><span v-once>{{luckyNumber}}</span>
+        </span>
+        </hr>
+        {{shuffleEmployeeProjectsOrder()}}
+        <P>Projects in Pipeline</P>
+        <ul>
+            <li v-for="(project,index) in employee.projects" :key="project.project">
+                <span>{{index+1}} - "{{project.project}}" timeline is - {{project.timeline}}</span>
+                <input type="text" />
+            </li>
+        </ul>
+        </hr>
+        <ul>
+            <li v-for="(value,key) in employee">
+                <span>{{key}}: {{value}}</span>
+
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        const { createApp, ref, reactive } = Vue;
+
+
+        createApp({
+            setup(){
+                const message = "Hello Vue 3!";
+                let luckyNumber = ref(7);
+                const luckyNumbers = [3,7,9,11];
+                const blogUrl = "https://www.google.com";
+                const employee = ref({
+                    name: "John",
+                    age: 30,
+                    salary:50000,
+                    hasCorporatedCard: false,
+                    spendingLimit: 10000,
+                    yearsWithCompany: 5,
+                    projects: [
+                        {project: "Green A", timeline: "2 years"},
+                        {project: "Blue H", timeline: "9 months"},
+                        {project: "Pink G", timeline: "3 years"},
+                    ],
+                });
+                const employee2 = reactive({
+                    name: "Peter",
+                    age: 45,
+                    salary:80000
+                });
+
+                function getMessage2(){
+                    return message;
+                }
+                
+                function updateRandomLuckyNumber(){
+                    setTimeout(() =>{
+                        luckyNumber.value = 777;
+                        employee.value.salary = 60000;
+                        employee2.salary = 100000;
+                    }, 2000);
+                }
+
+                function getMessage(){
+                    return `<h1><u>${message}</u></h1>`;
+                }
+
+                function shuffleEmployeeProjectsOrder(){
+                    setTimeout(() => {
+                        employee.value.projects.sort(() => Math.random()-0.5);
+                    },5000);
+                }
+                return{
+                    getMessage,
+                    luckyNumber,
+                    luckyNumbers,
+                    employee,
+                    updateRandomLuckyNumber,
+                    employee2,
+                    getMessage2,
+                    blogUrl,
+                    shuffleEmployeeProjectsOrder,
+                };
+            },
+        }).mount("#app");
+    </script>
+</body>
+</html>
