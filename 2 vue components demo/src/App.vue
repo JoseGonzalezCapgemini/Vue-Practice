@@ -1,11 +1,23 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+    <div class="container">
+        <div>
+            {{message}}
+        </div>
+        <!--Global Component-->
+        <!-- <contact-us></contact-us> -->
+        <!--Local Component-->
+        <!-- <ButtonCounter></ButtonCounter> -->
+        <ContactUs></ContactUs>
+    </div>
 </template>
 
-<style scoped></style>
+<script setup>
+    import ContactUs from "./components/ContactUs.vue";
+    import ButtonCounter from "./components/ButtonCounter.vue";
+
+    const message = "Hello Vue";
+</script>
+
+<style>
+
+</style>
