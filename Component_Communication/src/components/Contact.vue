@@ -15,12 +15,17 @@
                 </button>
                 <p> Is Favorite: {{ isFavorite }}</p>
             </div>
+            <div class="col-3">
+                <!-- <LuckyNumber :maxNumber="maxNumber"></LuckyNumber> -->
+                 <LuckyNumber></LuckyNumber>
+            </div>
         </div>
         <span class="float-end small" v-if="ownername">*This contact info belongs to {{ ownername }}</span>
     </div>
 </template>
 
 <script setup>
+    import LuckyNumber from "./LuckyNumber.vue";
     import {ref, defineProps} from "vue";
     const props = defineProps ({
         name: {type: String, required: true},
@@ -28,6 +33,7 @@
         ownername: String,
         isFavorite: Boolean,
         email: {type: String, required: false, default:"-n/a-"},
+        //maxNumber: Number,
     })
 
     const emit = defineEmits(["update-favorite"]);
