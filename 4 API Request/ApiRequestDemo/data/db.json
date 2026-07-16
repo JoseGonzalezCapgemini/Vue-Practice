@@ -1,0 +1,53 @@
+{
+  "destination": [
+    {
+      "id": 1,
+      "name": "Bangkok",
+      "days": 7,
+      "funFact": "Bangkok is the capital and most populous city of Thailand.",
+      "price": 1000
+    },
+    {
+      "id": 2,
+      "name": "Paris",
+      "days": 5,
+      "funFact": "The Eiffel Tower can be up to 15 cm taller during hot days.",
+      "price": 1800
+    },
+    {
+      "id": 3,
+      "name": "Tokyo",
+      "days": 10,
+      "funFact": "Tokyo has more Michelin-starred restaurants than any other city.",
+      "price": 2500
+    },
+    {
+      "id": 4,
+      "name": "New York",
+      "days": 4,
+      "funFact": "The Statue of Liberty was a gift from France in 1886.",
+      "price": 1500
+    },
+    {
+      "id": 5,
+      "name": "Sydney",
+      "days": 8,
+      "funFact": "The Sydney Opera House roof is made of over one million tiles.",
+      "price": 2200
+    },
+    {
+      "id": 6,
+      "name": "Rome",
+      "days": 6,
+      "funFact": "Rome is home to the smallest country in the world, Vatican City.",
+      "price": 1700
+    },
+    {
+      "id": 7,
+      "name": "Cancun",
+      "days": 5,
+      "funFact": "Cancun is known for having part of the world's second-largest coral reef.",
+      "price": 1200
+    }
+  ]
+}
